@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo localStorage</title>
+    <script>
+        // Função para salvar o nome no localStorage
+        function salvarNome() {
+            let nome = document.getElementById("nomeInput").value;
+            if (nome) {
+                localStorage.setItem("nomeUsuario", nome);
+                mostrarNome();
+            }
+        }
+
+        // Função para exibir o nome salvo
+        function mostrarNome() {
+            let nomeSalvo = localStorage.getItem("nomeUsuario");
+            if (nomeSalvo) {
+                document.getElementById("nomeExibido").textContent = "Nome salvo: " + nomeSalvo;
+            } else {
+                document.getElementById("nomeExibido").textContent = "Nenhum nome salvo.";
+            }
+        }
+
+        // Função para remover o nome do localStorage
+        function removerNome() {
+            localStorage.removeItem("nomeUsuario");
+            mostrarNome();
+        }
+
+        // Carregar nome salvo ao abrir a página
+        window.onload = mostrarNome;
+    </script>
+</head>
+<body>
+
+    <h2>Exemplo de localStorage</h2>
+    <input type="text" id="nomeInput" placeholder="Digite seu nome">
+    <button onclick="salvarNome()">Salvar Nome</button>
+    <button onclick="removerNome()">Remover Nome</button>
+
+    <p id="nomeExibido"></p>
+
+</body>
+</html>
